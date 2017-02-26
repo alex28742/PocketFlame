@@ -6,7 +6,6 @@
 <link href="/wa-content/font/ruble/MyriadPro/fontface.css" rel="stylesheet" type="text/css" />
 <link href="{$wa_active_theme_url}art-style.css?v2.0.0" rel="stylesheet" type="text/css" />
 <link href="{$wa_active_theme_url}art-media.css?v2.0.0" rel="stylesheet" type="text/css" />
-<link href="{$wa_active_theme_url}art-media.css?v2.0.0" rel="stylesheet" type="text/css" />
 
 <link href="{$wa_active_theme_url}custom.css?v2.0.0" rel="stylesheet" type="text/css" />
 
@@ -49,20 +48,9 @@
 {*<script type="text/javascript" src="{$wa_active_theme_url}amazing.js?v{$wa_theme_version}"></script>*}
 {*podbor.js*}
 {* <script type="text/javascript" src="{$wa_active_theme_url}podbor.js?v{$wa_theme_version}"></script> пустой файл*}
-<div class="google_advert">
-    <img class="ad-detect" src="/wa-data/public/site/themes/profitbuy/img/back-top.png" />
-</div>
-<div class="no_advert" style="display:none;">
-</div>
 
-<script>
-$(window).load(function () {
-    if ( $('.google_advert').height() == 0 ) {
-        setInterval('alert("Отключите Adblock!")', 1000);
-    }
-});
 
-</script>
+
 {if $wa->shop->config('enable_2x')}
     <script type="text/javascript" src="{$wa_static_url}wa-content/js/jquery-plugins/jquery.retina.min.js?v{$wa->version(true)}"></script>
     <script type="text/javascript">
