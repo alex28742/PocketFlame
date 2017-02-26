@@ -48,15 +48,15 @@
         <div class="container">
             <div class="row-grid">
                 <div class="col-grid s12 m12">
-                    <div class="col-grid l9 art-nav-left">
+                    <div class="col-grid l8 art-nav-left">
                             <ul class="base-menu {$type} tree art-base-menu" style="display: none;">
                                 {foreach $menu as $branch}
                                     {renderMenuItem menu=$branch icon=$icon selected=$selected exclude='not_top'}
-                                
+
                                 {/foreach}
                             </ul>
                     </div>
-                    <div class="col-grid l3 art-nav-right">
+                    <div class="col-grid l4 art-nav-right">
                         {$search}
                     </div>
                 </div>
