@@ -51,8 +51,7 @@
         <div class="art-wrapper-about">
             <h1>{$theme_settings.homepage_about_title}</h1>{/if}
             <h3>зажигалки и курительные аксессуары</h3>
-            <div class="art-about-body">{$theme_settings.homepage_about_body}</div>
-            <div class="lesen_mehr"><a href="#">Читать далее</a></div>
+            <div class="art-about-body">{$theme_settings.homepage_about_body} <a href="#" class="lesen_mehr">Читать далее</a></div>
 
         </div>
     </div>
@@ -63,7 +62,9 @@
     <div class="art-brands-wrap-line">
         <div class="art-brands-line">
             <div class="line-type art-category-title">
-                <span>{$cat_name.name|escape}</span>
+            <div class="fon_fur_treug">
+                <div class="fur_treug"><span>{$cat_name.name|escape}</span></div>
+            </div>
             </div>
             <div class="block  category-id-{$cat_name.id}">
 
