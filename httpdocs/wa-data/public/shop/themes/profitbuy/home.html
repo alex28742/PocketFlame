@@ -71,6 +71,12 @@
 
 
 <p style="font-size:25px;color:red;text-align:center">По макету здесь должен выводиться слайдер с товарами</p>
+    <div class="wrapper-list-products">
+    {if $wa->shop}
+    {$products = $wa->shop->productSet("gaslighter")}
+    {include file="list-thumbs.html" products=$products}
+    {/if}
+    </div>
 <hr class="art-hr-slider">
             <div class="block  category-id-{$cat_name.id}">
 
