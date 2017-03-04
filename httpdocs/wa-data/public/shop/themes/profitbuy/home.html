@@ -67,15 +67,23 @@
             </div>
             </div>
 
-
-
-
-<p style="font-size:25px;color:red;text-align:center">По макету здесь должен выводиться слайдер с товарами</p>
     <div class="wrapper-list-products">
-    {if $wa->shop}
-    {$products = $wa->shop->productSet("gaslighter")}
-    {include file="list-thumbs.html" products=$products}
-    {/if}
+        {if $cat_name.name}
+            {if $cat_name.name == "Зажигалки"}
+                {$products = $wa->shop->productSet("gaslighter")}
+            {elseif $cat_name.name == "Трубки"}
+                {$products = $wa->shop->productSet("pipes")}
+            {else}
+                {$products = 0} 
+            {/if}
+        <section class="sellerslist visible fill-background">
+                {if $wa->shop && $products}
+                    {include file="lists.html" products=$products ulclass="colored expandable carousel in-main-list-products"}
+                {/if}
+        </section>
+            
+        {else}
+        {/if}
     </div>
 <hr class="art-hr-slider">
             <div class="block  category-id-{$cat_name.id}">

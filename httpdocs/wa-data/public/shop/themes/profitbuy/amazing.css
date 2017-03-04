@@ -35,3 +35,18 @@
   font-weight: bold;
   font-size: 14px;
 }
+
+/*эти стили нужны для корректного отображения списков на главной*/
+section.sellerslist.visible {
+    display: block;
+}
+
+.in-main-list-products.thumbs .art-itemscope {
+    width: auto !important;
+}
+
+.in-main-list-products .owl-stage-outer .art-offers .art-thumbs-down {
+    left: 36px;
+    width: 150px;
+    background-color: transparent !important;
+}
