@@ -1,0 +1,19 @@
+{
+    "remotePath": "./",
+    "host": "a188099.ftp.mchost.ru",
+    "username": "a188099_pflame",
+    "password": "9T5j6kh2N8",
+    "port": 21,
+    "secure": false,
+    "protocol": "ftp",
+    "uploadOnSave": false,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ]
+}
