@@ -142,8 +142,7 @@
         {* {$select_view = $select_view|default:$theme_settings.select_view} *}
         {* <div id="debug">{$category[1].name}</div> *}
         {* {if $parentCat == 2} *}
-            {include file='lazy-thumbs.html' sorting=!empty($category.params.enable_sorting) plp=true select_view=$select_view}
-
+            {include file='list-thumbs-pens.html' sorting=!empty($category.params.enable_sorting) plp=true select_view=$select_view}
         {* {else} *}
             {* {include file='list-thumbs.html' sorting=!empty($category.params.enable_sorting) plp=true select_view=$select_view} *}
         {* {/if} *}
