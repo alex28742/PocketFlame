@@ -1,0 +1,145 @@
+{
+    "type": "d",
+    "name": "",
+    "size": 4096,
+    "files": [
+        {
+            "type": "-",
+            "name": ".bash_history",
+            "size": 0
+        },
+        {
+            "type": "-",
+            "name": ".bash_logout",
+            "size": 18
+        },
+        {
+            "type": "-",
+            "name": ".bash_profile",
+            "size": 200
+        },
+        {
+            "type": "-",
+            "name": ".bashrc",
+            "size": 779
+        },
+        {
+            "type": "d",
+            "name": ".cache",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": ".cagefs",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": ".cl.selector",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": ".config",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": ".cpan",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": ".cpanm",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": ".local",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": ".mc",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": ".ssh",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": ".vim",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "-",
+            "name": ".viminfo",
+            "size": 0
+        },
+        {
+            "type": "-",
+            "name": ".vimrc",
+            "size": 0
+        },
+        {
+            "type": "d",
+            "name": "cgi-bin",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": "httpdocs",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": "logs",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": "pd",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": "private",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": "statistics",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": "subdomains",
+            "size": 4096,
+            "files": []
+        },
+        {
+            "type": "d",
+            "name": "tmp",
+            "size": 4096,
+            "files": []
+        }
+    ]
+}

@@ -44,17 +44,3 @@ section.sellerslist.visible {
 .in-main-list-products.thumbs .art-itemscope {
     width: auto !important;
 }
-
-.in-main-list-products .owl-stage-outer .art-offers .art-thumbs-down {
-    /*left: 36px;*/
-    /*width: 150px;*/
-    /*background-color: transparent !important;*/
-}
-
-/*.owl-stage-outer {*/
-/*    width: 90%;*/
-/*}*/
-
-/*.art-brands-line .owl-stage-outer {*/
-/*    left: -11px;*/
-/*}*/
