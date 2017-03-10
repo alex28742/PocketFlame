@@ -111,35 +111,7 @@
 							</div>
 							{/if}
 							{* end Скрытие определенных характеристик*}
-							<div class="art-photo_and_social">
-									{if !empty($theme_settings.share)}
-									<!-- share -->
-									<div class="art-wrap-social">
-										<div><span>Поделиться:</span></div>
-										<!--{$theme_settings.share}-->
-										<div class="art-social-cart">
-											<ul>
-											<li class="art-social-item-cart">
-													<a href="#">
-															<img src="/wa-data/public/site/themes/profitbuy/img/instagram_black.png"></a>
-											</li>
-											<li class="art-social-item-cart">
-													<a href="#">
-															<img src="/wa-data/public/site/themes/profitbuy/img/facebook_black.png"></a>
-											</li>
-											<li class="art-social-item-cart">
-													<a href="#">
-															<img src="/wa-data/public/site/themes/profitbuy/img/vk_black.png"></a>
-											</li>
-											<li class="art-social-item-cart">
-													<a href="#">
-															<img src="/wa-data/public/site/themes/profitbuy/img/twitter_black.png"></a>
-											</li>
-										</ul>
-									</div>
-									</div>
-									{/if}
-							</div>
+
 					</div>
 			</div>
 
@@ -309,6 +281,35 @@
 					<a href="{$wa->getUrl('/frontend/tag', ['tag' => urlencode($t)])}">{$t}</a> {/foreach}
 				</div>
 				{/if}
+			</div>
+			<div class="art-photo_and_social">
+					{if !empty($theme_settings.share)}
+					<!-- share -->
+					<div class="art-wrap-social">
+						<div><span>Поделиться:</span></div>
+						<!--{$theme_settings.share}-->
+						<div class="art-social-cart">
+							<ul>
+							<li class="art-social-item-cart">
+									<a href="#">
+											<img src="/wa-data/public/site/themes/profitbuy/img/instagram_black.png"></a>
+							</li>
+							<li class="art-social-item-cart">
+									<a href="#">
+											<img src="/wa-data/public/site/themes/profitbuy/img/facebook_black.png"></a>
+							</li>
+							<li class="art-social-item-cart">
+									<a href="#">
+											<img src="/wa-data/public/site/themes/profitbuy/img/vk_black.png"></a>
+							</li>
+							<li class="art-social-item-cart">
+									<a href="#">
+											<img src="/wa-data/public/site/themes/profitbuy/img/twitter_black.png"></a>
+							</li>
+						</ul>
+					</div>
+					</div>
+					{/if}
 			</div>
 		</div>
 		<div class="col-grid s12 l5">gdfgdf</div>
