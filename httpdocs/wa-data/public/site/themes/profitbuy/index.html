@@ -2,6 +2,13 @@
 
 <!DOCTYPE html>
 <html lang="{if $wa->locale()}{$locale = explode('_', $wa->locale())}{$locale[0]}{else}en{/if}">
+{if waRequest::param('app') == 'shop' && waRequest::param('module') == 'frontend' && !waRequest::param('action')}
+<style type="text/css">
+html{
+  background-color:#e7ebf1;
+}
+</style>
+{/if}
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
@@ -205,7 +212,7 @@ on-med-and-down align-right*}
                                     <li class="art-nav-pills-item">
                                         <a href="{$page.url}">{$page.name}</a>
                                     </li>
-                                  
+
                                         {/if}
                                     {/foreach}
                                 </ul>

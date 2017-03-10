@@ -1,7 +1,5 @@
 
-html{
-  background-color: #e7ebf1;
-}
+
 
 .art-wrapper-fon-cart{
 background-color:#efefef;
@@ -99,7 +97,6 @@ color: #fff;
 .art-nav{
 background-color:#090909;
 height:100%;
-border-bottom: 1px solid #fff;
 }
 .art-base-menu>li>a{
 color:#b4b4b7;
@@ -272,7 +269,7 @@ background-repeat:no-repeat;
 background-position:right 16px;
 font-size:17.18px;
 padding-left:14px !important;
-border-bottom: 1px solid #fff;
+border-bottom: 1px solid #e7ebf1;
 padding: 18px 15px;
 }
 
@@ -338,7 +335,7 @@ height:100%;
 background-color: #fff;
 }
 .art-wrapper-about{
-padding:48px 113px 61px 109px;
+padding:48px 65px 61px 70px;
 }
 .art-wrapper-about h1,
 .art-wrapper-about h3{
@@ -357,6 +354,7 @@ margin-bottom:0;
 font-size:69.32px;
 font-family:"Myriad Pro_bold";
 text-transform:uppercase;
+letter-spacing: 1.8px;
 }
 .art-about-body{
 font-size:16px;
@@ -386,12 +384,14 @@ top:26px;
 }
 .art-wrapper-brands{
 padding-bottom:48px;
-padding-left:25px;
-padding-right:25px;
 background-color: #fff;
 }
+
+
+
 .art-brands-wrap-line{
-padding:48px 0;
+padding:48px 25px;
+background: url('/wa-data/public/site/themes/profitbuy/img/ten.png') no-repeat 0 -7px;
 }
 .art-category-title{
 font-size:24px;
@@ -403,7 +403,7 @@ bottom:20px;
 }
 
 .fon_fur_treug{
-  width: 335px;
+  width: 205px;
   background-color: #fff;
   margin: 0 auto;
 }
@@ -415,18 +415,14 @@ bottom:20px;
 
 .art-category-title span{
 padding:0 20px;
-color: #fff;
-vertical-align: middle;
-background-image: url('/wa-data/public/site/themes/profitbuy/img/feuer.png');
-background-position: left center;
-background-repeat: no-repeat;
+color: #090909;
+position: relative;
+top: 10px;
 font-family: 'Myriad Pro_bold';
 font-size: 21.96px;
 }
 
-.art-brands-line{
-  border-top: 1px solid #14151f;
-}
+
 
 .art-brands-line .art-itemscope{
   border: none !important;
@@ -436,13 +432,9 @@ font-size: 21.96px;
   display: none;
 }
 
-.art-brands-line .owl-stage-outer .owl-item{
-  width: 157px !important;
-}
 
 .art-brands-line .owl-stage-outer{
   height: auto !important;
-    left: 35px;
 }
 
 .art-brands-line .art-itemscope .art-pl-item-wrapper{
@@ -460,9 +452,8 @@ ul.base-menu.tree > li.art-parent .art-level-ul{
 }
 
 .fur_treug{
-  width: 313px;
-  height: 40px;
-  background-color: #14151f;
+  height: 60px;
+  background-color: #fff;
   position: relative;
   margin: 0 auto;
 }
@@ -470,23 +461,32 @@ ul.base-menu.tree > li.art-parent .art-level-ul{
 .fur_treug::before{
   content: "";
   position: absolute;
-	left: 0;
-	width: 0;
-	height: 0;
-	border-top: 20px solid #fff;
-	border-right: 35px solid #14151F;
-	border-bottom: 20px solid #fff;
+	left: -40px;
+	width: 60px;
+	height: 60px;
+  background-color: #fff;
+  top: 10px;
+  -moz-transform: rotate(60deg); /* Для Firefox */
+  -ms-transform: rotate(60deg); /* Для IE */
+  -webkit-transform: rotate(60deg); /* Для Safari, Chrome, iOS */
+  -o-transform: rotate(60deg);
+  transform: rotate(60deg);
+
 }
 
 .fur_treug::after{
   content: "";
   position: absolute;
-	right: 0;
-	width: 0;
-	height: 0;
-	border-top: 20px solid #fff;
-	border-left: 35px solid #14151F;
-	border-bottom: 20px solid #fff;
+	right: -40px;
+	width: 60px;
+	height: 60px;
+  background-color: #fff;
+  top: 10px;
+  -moz-transform: rotate(120deg); /* Для Firefox */
+  -ms-transform: rotate(120deg); /* Для IE */
+  -webkit-transform: rotate(120deg); /* Для Safari, Chrome, iOS */
+  -o-transform: rotate(120deg);
+  transform: rotate(120deg);
 }
 
 
@@ -533,8 +533,12 @@ background-image:url("/wa-data/public/site/themes/profitbuy/img/banner.jpg");
 background-position:0 345px;
 background-repeat:no-repeat;
 background-size:contain;
-height:290vh;
+height:2685px;
 margin-bottom:0;
+}
+
+ul.product-list.colored.carousel li:first-child:hover, ul.product-list.colored > li:hover{
+  box-shadow: none !important;
 }
 
 .without-sidebar ul.product-list.thumbs.carousel .owl-nav, ul.product-list.thumbs.carousel .owl-nav{
@@ -610,8 +614,6 @@ border-radius: 11px;
 }
 .art-hide-on-med-and-down{
 background-color:#000;
-height: 100px;
-line-height: 97px !important;
 }
 .art-pane-left .art-addition-link,
 .art-cart-text{
@@ -640,7 +642,6 @@ padding-left:10px;
 .art-globalfooter .art-footer-line{
 border-top:none;
 background-color: #0E192D;
-height: 100px;
 }
 
 .art-pane-left .art-addition-link{
@@ -661,14 +662,8 @@ height: 100px;
   padding: 0 !important;
 }
 
-.art-footer-line .container .row-grid .col-grid{
-  line-height: 95px;
-}
 
-.art-globalfooter{
-  position: relative;
-  bottom: 44px;
-}
+
 
 
 .art-nav-pills{
@@ -877,6 +872,11 @@ ul.product-list.thumbs.carousel .owl-next{
 
 }
 
+.art-brands-line .block{
+  position: relative;
+  left: 25px;
+}
+
 .without-sidebar ul.product-list.thumbs.carousel .owl-prev,
 ul.product-list.thumbs.carousel .owl-prev{
     width: 55px;
@@ -885,8 +885,14 @@ ul.product-list.thumbs.carousel .owl-prev{
 
 .without-sidebar ul.product-list.thumbs.carousel .owl-next,
 ul.product-list.thumbs.carousel .owl-next{
+    width: 45px;
+    background-position:-115px 50% !important;
+}
+
+.without-sidebar ul.product-list.thumbs.carousel .owl-prev,
+ul.product-list.thumbs.carousel .owl-prev{
     width: 55px;
-    background-position:-133px 50% !important;
+    background-position:-10px 50% !important;
 }
 
 
@@ -1104,6 +1110,14 @@ white-space: nowrap;
 }
 .bookmark .list .art-badge-wrapper img{
 margin-left:0 !important;
+}
+
+.art-image .art-badge-wrapper img{
+  border: 1px solid #fff;
+}
+
+.art-image .art-badge-wrapper img:hover{
+border-color: #B50003;
 }
 .list .art-thumbs-count-text.pre-order-als,
 .thumbs .art-thumbs-count-text.pre-order-als{
