@@ -319,7 +319,7 @@ $(document).ready(function () {
     //$('.homepage-bxslider').css('height','auto');
 
     $(".product-list.thumbs.carousel").owlCarousel({
-        //loop: true,
+        loop: true,
         dots: false,
         items: 1,
         nav: true,
@@ -335,10 +335,10 @@ $(document).ready(function () {
                 items: 3
             },
             993: {
-                items: $('.without-sidebar').length == 0 ? 4 : 3
+                items: 4//items: $('.without-sidebar').length == 0 ? 4 : 3
             },
             1281: {
-                items: $('.without-sidebar').length == 0 ? 5 : 4
+                items: 5//items: $('.without-sidebar').length == 0 ? 5 : 4
             }
         }
     });
