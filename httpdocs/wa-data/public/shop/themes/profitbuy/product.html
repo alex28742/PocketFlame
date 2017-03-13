@@ -312,7 +312,20 @@
 					{/if}
 			</div>
 		</div>
-		<div class="col-grid s12 l5">gdfgdf</div>
+		<div class="col-grid s12 l5 art-vivod-otdelki">
+			<div class="otdelka-txt">выбрать другую отделку</div>
+			<div class="art-otdelka">{$collection = $wa->shop->products("category/`$product.category_id`")}
+    {if count($collection)>0}
+      <ul>
+      {foreach $collection as $pcoll}
+        {if $pcoll.id != $product.id}
+          <li><a title="{$pcoll.name}" href="{$pcoll.frontend_url}">{$wa->shop->productImgHtml($pcoll, '96x0', ['itemprop' => 'image', 'alt' => $pcoll.name, 'default' => "`$wa_theme_url`img/dummy96.png"])}</a></li>
+        {/if}
+      {/foreach}
+      </ul>
+    {/if}
+	</div>
+		</div>
 
 	</div>
 	<!-- END Нижняя часть страницы с описанием, характеристиками товара -->
