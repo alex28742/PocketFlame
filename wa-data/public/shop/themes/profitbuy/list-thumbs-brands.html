@@ -1,5 +1,6 @@
+<em>list-thumbs-brands</em>
 <!--  commit  -->
-{* <ul class="product-list art-product-list expandable colored {if $parentCat == 2}list{else}thumbs{/if}"> *}
+ <ul class="product-list art-product-list expandable colored thumbs">{*{if $parentCat == 2}list{else}thumbs{/if}*}
 <div class="art-product-list expandable colored">
     {foreach $category as $collection}
 
@@ -8,13 +9,14 @@
             {if count($collection.childs)>0}
                 {foreach $collection.childs as $decoration}
                     {$products = $wa->shop->products("category/`$decoration.id`")}
+                    {if count($products) > 0}
                     {$features = $wa->shop->features($products)}
 
                     <div class="line-collection t4" style="clear:both" data-title-decoration="{$decoration.id}">
                         <h4>Отделка: <span class="art-item-name">{$decoration.name}</span></h4>
-                        {if count($products) > 0}
-                        <ul class="product-list art-product-list expandable colored {if $parentCat == 2}list{else}thumbs{/if}">
-                            {foreach $products as $p}
+                        {* {if isset($products)} *}
+                        <ul class="product-list art-product-list expandable colored thumbs">{*{if $parentCat == 2}list{else}thumbs{/if}*}
+                            {foreach $products as $p}{*if !isset($p)}<span class="empty">empty</span>{/if*}
                             {$available = $wa->shop->settings('ignore_stock_count') || $p.count === null || $p.count > 0}
                             <li data-decoration="{$decoration.id}" data-collection="{$collection.id}" data-type-id="{$p.features.tip_pishushchego_uzla|key}" data-price="{$p.price}" class="art-itemscope" {if empty($without_micro_markup)} itemscope itemtype ="http://schema.org/Product"{/if}>
                                 <div class="pl-item-wrapper art-pl-item-wrapper">
@@ -142,15 +144,18 @@
                                 {/if}
                             </li>
                             {/foreach}
-                        {* </ul> *}
-                        {/if}
+                        </ul>
+
                     </div>
+                    {else}
+                        {* нет товара *}
+                    {/if}
                 {/foreach}
             {else}
                     {$products = $wa->shop->products("category/`$collection.id`")}
                     {$features = $wa->shop->features($products)}
                         {if count($products)>0}
-                        <ul class="product-list art-product-list expandable colored {if $parentCat == 2}list{else}thumbs{/if}">
+                        <ul class="product-list art-product-list expandable colored thumbs">{*{if $parentCat == 2}list{else}thumbs{/if}*}
                             {foreach $products as $p}
                             {$available = $wa->shop->settings('ignore_stock_count') || $p.count === null || $p.count > 0}
                             <li data-collection="{$collection.id}" data-type-id="{$p.features.tip_pishushchego_uzla|key}" data-price="{$p.price}" class="art-itemscope" {if empty($without_micro_markup)} itemscope itemtype ="http://schema.org/Product"{/if}>
@@ -285,4 +290,4 @@
     </div>
     {/foreach}
 </div>
-{* </ul> *}
+</ul>

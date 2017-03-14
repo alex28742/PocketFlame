@@ -8,7 +8,7 @@
 {if $category.params.col}{$col_count = $category.params.col}{/if}
 {$get_params = $smarty.server.REQUEST_URI}
 {$flag_podbor = false}
-{if $category.id == 2}{$fullpens = true}{$cat_name = "Подбор пишущих инструментов"}{$flag_podbor = true}
+{if $category.id == 2}{$lighters = true}{$cat_name = "Подбор пишущих инструментов"}{$flag_podbor = true}
 {elseif $category.id == 210}{$fullpaper = true}{$cat_name = "Подбор бумажно беловых товаров"}{$flag_podbor = true}
 {elseif $category.id == 252}{$fullaccess = true}{$cat_name = "Подбор настольных аксессуаров"}{$flag_podbor = true}
 {/if}
@@ -117,7 +117,7 @@
   <div class="art-banner-fon" style="background-image: url({if $category.params.banner}{$category.params.banner}{else}/wa-data/public/site/themes/profitbuy/img/banner-no-image.jpg{/if})"></div>
 {/if}
 {* {if !empty($filters) && ($theme_settings.filter_pos|escape == "content")}
-    {if $fullpens}<div class="fill-background">{include file="filter.pish.html"}</div>
+    {if $lighters}<div class="fill-background">{include file="filter.pish.html"}</div>
     {elseif $fullpaper} <div class="fill-background">{include file="filter.bum.belov.html"}</div>
     {elseif $fullaccess}<div class="fill-background">{include file="filter.nastol.acsess.html"}</div>
     {elseif $pens}<div class="fill-background">{include file="filter_pens_items.html"}</div>
@@ -126,9 +126,12 @@
     {else}<div class="fill-background">{include file="filter.collection.html"}</div>
     {/if}
 {else} <h5>Для данной категории не настроен фильтр либо отсутствуют товары!</h5>{/if} *}
-{if !empty($filters) && ($theme_settings.filter_pos|escape == "content")}
+{if !empty($filters) && ($theme_settings.filter_pos|escape == "content") && $lighters}
     <div class="fill-background">{include file="filter.new.html"}</div>
+{else}
+    <em>для данной категории товаров фильтр не настроен</em>
 {/if}
+
 <div id="product-list" class="fill-background">
     {if !$products}
         {if !empty($filters)}
