@@ -102,7 +102,6 @@ height:100%;
 color:#b4b4b7;
 font-size:18.05px;
 font-family:"HelveticaNeueLight";
-text-decoration: underline;
 }
 .art-row-no-border{
 background-color:#e0e0e0;
@@ -962,7 +961,7 @@ bottom:0;
 padding-left:15px;
 padding-top:15px;
 position:absolute;
-right: 3px;
+right: 2px;
 background-color:#fff;
 width:60%;
 }
@@ -1272,6 +1271,8 @@ padding:0 !important;
   min-width: 100px;
   border-radius: 1px;
   height: 100px;
+  box-shadow: none;
+  margin: 0 10px 0 0;
 }
 
 .art-wrap-cartochka #product-gallery.more-images .image img{
@@ -1445,7 +1446,7 @@ text-align: left;
   border: 1px solid #b3b3b3;
   width: 100px;
   vertical-align: middle;
-  margin-right: 15px;
+  margin: 0 10px 20px 0;
   text-align: center;
   border-radius: 1px;
 }

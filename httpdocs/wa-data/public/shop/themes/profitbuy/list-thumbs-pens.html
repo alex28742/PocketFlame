@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--  commit  -->
 {* <ul class="product-list art-product-list expandable colored {if $parentCat == 2}list{else}thumbs{/if}"> *}
 <div class="art-product-list expandable colored">
@@ -284,3 +285,291 @@
     {/foreach}
 </div>
 {* </ul> *}
+=======
+<!--  commit  -->
+{* <ul class="product-list art-product-list expandable colored {if $parentCat == 2}list{else}thumbs{/if}"> *}
+<div class="art-product-list expandable colored">
+    {foreach $category as $collection}
+    <div class="line-collection t2" style="clear:both" data-title-collection="{$collection.id}">
+        <h2>Коллекция: <span class="art-item-name">{$collection.name}</span></h2>
+            {if count($collection.childs)>0}
+                {foreach $collection.childs as $decoration}
+                    {$products = $wa->shop->products("category/`$decoration.id`")}
+                    {$features = $wa->shop->features($products)}
+                    <div class="line-collection t4" style="clear:both" data-title-decoration="{$decoration.id}">
+                        <h4>Отделка: <span class="art-item-name">{$decoration.name}</span></h4>
+                        {if count($products)>0}
+                        <ul class="product-list art-product-list expandable colored {if $parentCat == 2}list{else}thumbs{/if}">
+                            {foreach $products as $p}
+                            {$available = $wa->shop->settings('ignore_stock_count') || $p.count === null || $p.count > 0}
+                            <li data-decoration="{$decoration.id}" data-collection="{$collection.id}" data-type-id="{$p.features.tip_pishushchego_uzla|key}" data-price="{$p.price}" class="art-itemscope" {if empty($without_micro_markup)} itemscope itemtype ="http://schema.org/Product"{/if}>
+                                <div class="pl-item-wrapper art-pl-item-wrapper">
+                                    <div class="pl-item-image art-pl-item-image">
+                                        <a href="{$p.frontend_url}" title="{$p.name}">
+                                            <div class="image art-image">
+                                                {$_images_url = []}
+                                                <div class="image-setting-wrapper art-image-setting-wrapper"{if !empty($_images[$p.id])}{foreach $_images[$p.id] as $_i}{$_images_url[] = $_i['url_200']}{/foreach} data-images='{json_encode($_images_url)}'{/if}>
+                                                    {if count($_images_url) > 1}
+                                                        <span title="[`Prev image`]" class="image-setting-btn image-setting-prev art-image-setting-prev"><i class="material-icons mi-2x">&#xE5CB;</i></span>
+                                                        <span title="[`Next image`]" class="image-setting-btn image-setting-next art-image-setting-next"><i class="material-icons mi-2x">&#xE5CC;</i></span>
+                                                    {/if}
+                                                    {if !empty($theme_settings.product_preview)}
+                                                        <span title="[`Preview`]" class="image-setting-btn image-setting-product-preview" data-url="{$p.frontend_url}{if strpos($p.frontend_url, '?')}&{else}?{/if}cart=1&amp;preview=1">
+                                                            <i class="material-icons mi-2x">&#xE85B;</i>
+                                                        </span>
+                                                    {/if}
+                                                </div>
+                                                <div class="badge-wrapper art-badge-wrapper">
+                                                    {$badge_html = $wa->shop->badgeHtml($p.badge)}
+                                                    {if $badge_html}
+                                                        <div class="corner top left">{$badge_html}</div>
+                                                    {/if}
+                                                    {if empty($without_micro_markup)}
+                                                        {if !$pens_cat_flag}
+                                                          {$wa->shop->productImgHtml($p, '370', ['itemprop' => 'image', 'alt' => $p.name, 'default' => "/wa-data/public/site/themes/profitbuy/img/no-image-big.png"])}
+                                                        {elseif $pens_cat_flag}
+                                                          {$wa->shop->productImgHtml($p, '370', ['itemprop' => 'image', 'alt' => $p.name, 'default' => "/wa-data/public/site/themes/profitbuy/img/no-img.png"])}
+                                                        {/if}
+                                                    {else}
+                                                      {$wa->shop->productImgHtml($p, '370', ['alt' => $p.name, 'default' => "/wa-data/public/site/themes/profitbuy/img/no-image-big.png"])}
+                                                    {/if}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="pl-item-info art-pl-item-info">
+                                        <div class="pl-item-info-expandable art-pl-item-info-expandable">
+                                            <hr class="art-thumbs-hr" style="display:none;">
+                                            <div class="row-line">
+                                                <div class="link">
+                                                    <a href="{$p.frontend_url}" title="{$p.name}">
+                                                        <h5>
+                                                            <span{if empty($without_micro_markup)} itemprop="name"{/if}>{$p.name}</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                                <div class="type-uzel">
+                                                    <span>{$p.features.tip_pishushchego_uzla[$p.features.tip_pishushchego_uzla|key]}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="price_and_stock">
+                                            <div class="prise-wrapper">
+                                                <span class="price nowrap{if !$available} price-noavilable{/if}">
+                                                    {$p.price}
+                                                    <span class="ruble">Р</span>
+                                                </span>
+                                            </div>
+                                            {if $available}
+                                            <span class="rating nowrap">{if $p.rating > 0}{$wa->shop->ratingHtml($p.rating, '24')}{/if}</span>
+                                                {if $p.count === null || $p.count > 0}
+                                                    <div class="stock-label stock-high">
+                                                    <i class="icon16 stock-green"></i>
+                                                    <span class="art-thumbs-count-text{if !$available} pre-order-als{/if}">{if $available}[`In stock`]{else}Нет в наличии{/if}</span>
+                                                    </div>
+                                                {else}
+                                                    <div class="stock-label stock-none"><i class="icon16 stock-transparent"></i><span class="art-thumbs-count-text">[`Pre-order only`]</span></div>
+                                                {/if}
+                                            {else}
+                                                <div class="noavilable-text"><span class="art-thumbs-count-text pre-order-als">Нет в наличии</span></div>
+                                            {/if}
+                                        </div>
+                                        <div class="offers art-offers{if !$available} no-avilable-list-pens{/if}"{if empty($without_micro_markup)} itemprop="offers" itemscope itemtype="http://schema.org/Offer"{/if}>
+                                            {if !$available}
+                                                <div class="purchase addtocart" {if $p.sku_count > 1}data-url="{$p.frontend_url}{if strpos($p.frontend_url, '?')}&{else}?{/if}cart=1"{/if}>
+                                                    {if empty($without_micro_markup)}
+                                                        <meta itemprop="price" content="{$p.price}">
+                                                        <meta itemprop="priceCurrency" content="{$wa->shop->primaryCurrency()}">
+                                                    {/if}
+                                                    <div class="art-thumbs-down{if !$available} no-available-wrap-btn{/if}">
+                                                      <div class="addition-wrapper art-addition-wrapper">
+                                                          <a data-product="{$p.id}" href="#" class="addition-button bookmark-add{if in_array($p.id, $bookmark_p)} added{/if}" title="[`In bookmarks`]" rel="nofollow">
+                                                              <i class="material-icons mi-2x">&#xE838;</i>
+                                                          </a>
+                                                          <a data-product="{$p.id}" href="#" class="addition-button compare-add{if in_array($p.id, $compare_p)} added{/if}" title="[`In comparison`]" rel="nofollow">
+                                                              <i class="material-icons mi-2x">&#xE01D;</i>
+                                                          </a>
+                                                        </div>
+                                                        <div class="submit-wrapper{if !$available} no-available{/if}">
+                                                            <input type="submit" class="second-type{if !$available} pre-order-btn{/if}" value="{if !$available}Нет в наличии{else}В корзину{/if}"><i class="adding2cart"></i>
+                                                        </div>
+                                                    </div>
+                                                    <span class="added2cart" style="display: none;">{sprintf('[`%s is now <a href="%s"><strong>in your shopping cart</strong></a>`]', $p.name, $wa->getUrl('shop/frontend/cart'))}</span>
+                                                </div>
+                                            {else}
+                                                <form class="purchase addtocart" {if $p.sku_count > 1}data-url="{$p.frontend_url}{if strpos($p.frontend_url, '?')}&{else}?{/if}cart=1"{/if} method="post" action="{$wa->getUrl('shop/frontendCart/add')}">
+                                                    {if empty($without_micro_markup)}
+                                                        <meta itemprop="price" content="{$p.price}">
+                                                        <meta itemprop="priceCurrency" content="{$wa->shop->primaryCurrency()}">
+                                                    {/if}
+                                                    <input type="hidden" name="product_id" value="{$p.id}">
+                                                    <div class="art-thumbs-down{if !$available} no-available-wrap-btn{/if}">
+                                                      <div class="addition-wrapper art-addition-wrapper">
+                                                          <a data-product="{$p.id}" href="#" class="addition-button bookmark-add{if in_array($p.id, $bookmark_p)} added{/if}" title="[`In bookmarks`]" rel="nofollow">
+                                                              <i class="material-icons mi-2x">&#xE838;</i>
+                                                          </a>
+                                                          <a data-product="{$p.id}" href="#" class="addition-button compare-add{if in_array($p.id, $compare_p)} added{/if}" title="[`In comparison`]" rel="nofollow">
+                                                              <i class="material-icons mi-2x">&#xE01D;</i>
+                                                          </a>
+                                                        </div>
+                                                        <div class="submit-wrapper{if !$available} no-available{/if}">
+                                                            <input type="submit" class="second-type{if !$available} pre-order-btn{/if}" value="{if !$available}нет в наличии{else}В корзину{/if}"><i class="adding2cart"></i>
+                                                        </div>
+                                                    </div>
+                                                    <span class="added2cart" style="display: none;">{sprintf('[`%s is now <a href="%s"><strong>in your shopping cart</strong></a>`]', $p.name, $wa->getUrl('shop/frontend/cart'))}</span>
+                                                </form>
+                                                {if empty($without_micro_markup)}<link itemprop="availability" href="http://schema.org/InStock" />{/if}
+                                            {/if}
+                                        </div>
+                                    </div>
+                                </div>
+                                {if !empty($theme_settings.flying_cart_item) && $p.sku_count < 2}
+                                    <input type="hidden" class="flying-cart-data" data-url = "{$p.frontend_url}" data-img_url = "{$wa->shop->productImgUrl($p, '96x96')}" data-name = "{$p.name|escape}" data-price = "{shop_currency_html($p.price)|escape}" />
+                                {/if}
+                            </li>
+                            {/foreach}
+                        {* </ul> *}
+                        {/if}
+                    </div>
+                {/foreach}
+            {else}
+                    {$products = $wa->shop->products("category/`$collection.id`")}
+                    {$features = $wa->shop->features($products)}
+                        {if count($products)>0}
+                        <ul class="product-list art-product-list expandable colored {if $parentCat == 2}list{else}thumbs{/if}">
+                            {foreach $products as $p}
+                            {$available = $wa->shop->settings('ignore_stock_count') || $p.count === null || $p.count > 0}
+                            <li data-collection="{$collection.id}" data-type-id="{$p.features.tip_pishushchego_uzla|key}" data-price="{$p.price}" class="art-itemscope" {if empty($without_micro_markup)} itemscope itemtype ="http://schema.org/Product"{/if}>
+                                <div class="pl-item-wrapper art-pl-item-wrapper">
+                                    <div class="pl-item-image art-pl-item-image">
+                                        <a href="{$p.frontend_url}" title="{$p.name}">
+                                            <div class="image art-image">
+                                                {$_images_url = []}
+                                                <div class="image-setting-wrapper art-image-setting-wrapper"{if !empty($_images[$p.id])}{foreach $_images[$p.id] as $_i}{$_images_url[] = $_i['url_200']}{/foreach} data-images='{json_encode($_images_url)}'{/if}>
+                                                    {if count($_images_url) > 1}
+                                                        <span title="[`Prev image`]" class="image-setting-btn image-setting-prev art-image-setting-prev"><i class="material-icons mi-2x">&#xE5CB;</i></span>
+                                                        <span title="[`Next image`]" class="image-setting-btn image-setting-next art-image-setting-next"><i class="material-icons mi-2x">&#xE5CC;</i></span>
+                                                    {/if}
+                                                    {if !empty($theme_settings.product_preview)}
+                                                        <span title="[`Preview`]" class="image-setting-btn image-setting-product-preview" data-url="{$p.frontend_url}{if strpos($p.frontend_url, '?')}&{else}?{/if}cart=1&amp;preview=1">
+                                                            <i class="material-icons mi-2x">&#xE85B;</i>
+                                                        </span>
+                                                    {/if}
+                                                </div>
+                                                <div class="badge-wrapper art-badge-wrapper">
+                                                    {$badge_html = $wa->shop->badgeHtml($p.badge)}
+                                                    {if $badge_html}
+                                                        <div class="corner top left">{$badge_html}</div>
+                                                    {/if}
+                                                    {if empty($without_micro_markup)}
+                                                        {if !$pens_cat_flag}
+                                                          {$wa->shop->productImgHtml($p, '370', ['itemprop' => 'image', 'alt' => $p.name, 'default' => "/wa-data/public/site/themes/profitbuy/img/no-image-big.png"])}
+                                                        {elseif $pens_cat_flag}
+                                                          {$wa->shop->productImgHtml($p, '370', ['itemprop' => 'image', 'alt' => $p.name, 'default' => "/wa-data/public/site/themes/profitbuy/img/no-img.png"])}
+                                                        {/if}
+                                                    {else}
+                                                      {$wa->shop->productImgHtml($p, '370', ['alt' => $p.name, 'default' => "/wa-data/public/site/themes/profitbuy/img/no-image-big.png"])}
+                                                    {/if}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="pl-item-info art-pl-item-info">
+                                        <div class="pl-item-info-expandable art-pl-item-info-expandable">
+                                            <hr class="art-thumbs-hr" style="display:none;">
+                                            <div class="row-line">
+                                                <div class="link">
+                                                    <a href="{$p.frontend_url}" title="{$p.name}">
+                                                        <h5>
+                                                            <span{if empty($without_micro_markup)} itemprop="name"{/if}>{$p.name}</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                                <div class="type-uzel">
+                                                    <span>{$p.features.tip_pishushchego_uzla[$p.features.tip_pishushchego_uzla|key]}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="price_and_stock">
+                                            <div class="prise-wrapper">
+                                                <span class="price nowrap{if !$available} price-noavilable{/if}">
+                                                    {$p.price}
+                                                    <span class="ruble">Р</span>
+                                                </span>
+                                            </div>
+                                            {if $available}
+                                            <span class="rating nowrap">{if $p.rating > 0}{$wa->shop->ratingHtml($p.rating, '24')}{/if}</span>
+                                                {if $p.count === null || $p.count > 0}
+                                                    <div class="stock-label stock-high">
+                                                    <i class="icon16 stock-green"></i>
+                                                    <span class="art-thumbs-count-text{if !$available} pre-order-als{/if}">{if $available}[`In stock`]{else}Нет в наличии{/if}</span>{*под заказ*}
+                                                    </div>
+                                                {else}
+                                                    <div class="stock-label stock-none"><i class="icon16 stock-transparent"></i><span class="art-thumbs-count-text">[`Pre-order only`]</span></div>
+                                                {/if}
+                                            {else}
+                                                <div class="noavilable-text"><span class="art-thumbs-count-text pre-order-als">Нет в наличии</span></div>
+                                            {/if}
+                                        </div>
+                                        <div class="offers art-offers{if !$available} no-avilable-list-pens{/if}"{if empty($without_micro_markup)} itemprop="offers" itemscope itemtype="http://schema.org/Offer"{/if}>
+                                            {if !$available}
+                                                <div class="purchase addtocart" {if $p.sku_count > 1}data-url="{$p.frontend_url}{if strpos($p.frontend_url, '?')}&{else}?{/if}cart=1"{/if}>
+                                                    {if empty($without_micro_markup)}
+                                                        <meta itemprop="price" content="{$p.price}">
+                                                        <meta itemprop="priceCurrency" content="{$wa->shop->primaryCurrency()}">
+                                                    {/if}
+                                                    <div class="art-thumbs-down{if !$available} no-available-wrap-btn{/if}">
+                                                      <div class="addition-wrapper art-addition-wrapper">
+                                                          <a data-product="{$p.id}" href="#" class="addition-button bookmark-add{if in_array($p.id, $bookmark_p)} added{/if}" title="[`In bookmarks`]" rel="nofollow">
+                                                              <i class="material-icons mi-2x">&#xE838;</i>
+                                                          </a>
+                                                          <a data-product="{$p.id}" href="#" class="addition-button compare-add{if in_array($p.id, $compare_p)} added{/if}" title="[`In comparison`]" rel="nofollow">
+                                                              <i class="material-icons mi-2x">&#xE01D;</i>
+                                                          </a>
+                                                        </div>
+                                                        <div class="submit-wrapper{if !$available} no-available{/if}">
+                                                            <input type="submit" class="second-type{if !$available} pre-order-btn{/if}" value="{if !$available}Нет в наличии{else}В корзину{/if}"><i class="adding2cart"></i>
+                                                        </div>
+                                                    </div>
+                                                    <span class="added2cart" style="display: none;">{sprintf('[`%s is now <a href="%s"><strong>in your shopping cart</strong></a>`]', $p.name, $wa->getUrl('shop/frontend/cart'))}</span>
+                                                </div>
+                                            {else}
+                                                <form class="purchase addtocart" {if $p.sku_count > 1}data-url="{$p.frontend_url}{if strpos($p.frontend_url, '?')}&{else}?{/if}cart=1"{/if} method="post" action="{$wa->getUrl('shop/frontendCart/add')}">
+                                                    {if empty($without_micro_markup)}
+                                                        <meta itemprop="price" content="{$p.price}">
+                                                        <meta itemprop="priceCurrency" content="{$wa->shop->primaryCurrency()}">
+                                                    {/if}
+                                                    <input type="hidden" name="product_id" value="{$p.id}">
+                                                    <div class="art-thumbs-down{if !$available} no-available-wrap-btn{/if}">
+                                                      <div class="addition-wrapper art-addition-wrapper">
+                                                          <a data-product="{$p.id}" href="#" class="addition-button bookmark-add{if in_array($p.id, $bookmark_p)} added{/if}" title="[`In bookmarks`]" rel="nofollow">
+                                                              <i class="material-icons mi-2x">&#xE838;</i>
+                                                          </a>
+                                                          <a data-product="{$p.id}" href="#" class="addition-button compare-add{if in_array($p.id, $compare_p)} added{/if}" title="[`In comparison`]" rel="nofollow">
+                                                              <i class="material-icons mi-2x">&#xE01D;</i>
+                                                          </a>
+                                                        </div>
+                                                        <div class="submit-wrapper{if !$available} no-available{/if}">
+                                                            <input type="submit" class="second-type{if !$available} pre-order-btn{/if}" value="{if !$available}нет в наличии{else}В корзину{/if}"><i class="adding2cart"></i>
+                                                        </div>
+                                                    </div>
+                                                    <span class="added2cart" style="display: none;">{sprintf('[`%s is now <a href="%s"><strong>in your shopping cart</strong></a>`]', $p.name, $wa->getUrl('shop/frontend/cart'))}</span>
+                                                </form>
+                                                {if empty($without_micro_markup)}<link itemprop="availability" href="http://schema.org/InStock" />{/if}
+                                            {/if}
+                                        </div>
+                                    </div>
+                                </div>
+                                {if !empty($theme_settings.flying_cart_item) && $p.sku_count < 2}
+                                    <input type="hidden" class="flying-cart-data" data-url = "{$p.frontend_url}" data-img_url = "{$wa->shop->productImgUrl($p, '96x96')}" data-name = "{$p.name|escape}" data-price = "{shop_currency_html($p.price)|escape}" />
+                                {/if}
+                            </li>
+                            {/foreach}
+                        </ul>
+                        {/if}
+            {/if}
+    </div>
+    {/foreach}
+</div>
+{* </ul> *}
+>>>>>>> 97a9c98830fe06da0fd348c6914289f90e3f1d7f

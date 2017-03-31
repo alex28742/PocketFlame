@@ -1,0 +1,208 @@
+
+
+<script type="text/javascript">
+{literal}
+
+
+$(document).ready(function(){
+
+	$(".b-carousel-button-right").click(function(){ // при клике на правую кнопку запускаем следующую функцию:
+		$(".h-carousel-items").animate({left: "-80px"}, 200); // производим анимацию: блок с набором картинок уедет влево на 222 пикселя (это ширина одного прокручиваемого элемента) за 200 милисекунд.
+		setTimeout(function () { // устанавливаем задержку времени перед выполнением следующих функций. Задержка нужна, т.к. эти ффункции должны запуститься только после завершения анимации.
+			$(".h-carousel-items .b-carousel-block").eq(0).clone().appendTo(".h-carousel-items"); // выбираем первый элемент, создаём его копию и помещаем в конец карусели
+			$(".h-carousel-items .b-carousel-block").eq(0).remove(); // удаляем первый элемент карусели
+			$(".h-carousel-items").css({"left":"0px"}); // возвращаем исходное смещение набора набора элементов карусели
+		}, 300);
+	});
+
+	$(".b-carousel-button-left").click(function(){ // при клике на левую кнопку выполняем следующую функцию:
+		$(".h-carousel-items .b-carousel-block").eq(-1).clone().prependTo(".h-carousel-items"); // выбираем последний элемент набора, создаём его копию и помещаем в начало набора
+		$(".h-carousel-items").css({"left":"-80px"}); // устанавливаем смещение набора -222px
+		$(".h-carousel-items").animate({left: "0px"}, 200); // за 200 милисекунд набор элементов плавно переместится в исходную нулевую точку
+		$(".h-carousel-items .b-carousel-block").eq(-1).remove(); // выбираем последний элемент карусели и удаляем его
+	});
+
+});
+{/literal}
+</script>
+
+
+
+<figure class="product-gallery">
+
+    <!-- main image -->
+    <div class="image" id="product-core-image">
+        <div class="corner top left">
+            {$wa->shop->badgeHtml($product.badge)}
+        </div>
+
+        {if count($product.images) > 0}
+
+         <a href="{$wa->shop->productImgUrl($product, '970')}">
+            {$wa->shop->productImgHtml($product, '495', [ 'itemprop' => 'image', 'id' => 'product-image', 'alt' => $product.name|escape ])}
+        </a>
+
+        {else}
+            {*нет изображений*}
+            <a href="#">
+                <img itemprop="image" id="product-image" alt="no-image" src="/wa-data/public/site/themes/profitbuy/img/dummy200.png" class="">
+            </a>
+        {/if}
+
+
+
+
+        <div id="switching-image" style="display: none;"></div>
+    </div>
+
+{* ---------------------------------------------------- *}
+
+
+    <!-- thumbs -->
+    {if count($product.images) > 1 && false}
+
+        <div class="galery-wrapper">
+          <div {*id="product-gallery"*} class="more-images product-list art-product-list colored expandable carousel thumbs owl-carousel owl-theme owl-loaded" >
+
+              {$flag = false}
+              {foreach $product.images as $image}
+                  {if $flag == false}{$flag = true}{continue}{/if}
+
+                  <div class="image {if $image.id == $product.image_id} selected{/if}">
+                      <a id="product-image-{$image.id}" href="{$wa->shop->imgUrl($image, '970')}" class="small-galery-items">
+                          {$wa->shop->imgHtml($image, '200x0', ['alt' => $image.description])}{*96x96*}
+                      </a>
+                  </div>
+
+              {/foreach}
+          </div>
+      </div>
+      {else}
+      <div class="b-carousel"> <!-- контейнер, в котором будет карусель -->
+
+      		<div class="b-carousel-button-left"></div> <!-- левая кнопка -->
+      		<div class="b-carousel-button-right"></div> <!-- правая кнопка -->
+
+      		<div class="h-carousel-wrapper"> <!-- видимая область карусели -->
+      			<div class="h-carousel-items more-images"> <!-- весь набор элементов карусели -->
+
+              {foreach $product.images as $image}
+                <div class="b-carousel-block image {if $image.id == $product.image_id} selected{/if}"> <!-- элемент карусели -->
+        					<a href="#" class="a-carousel-image-link">
+        						{$wa->shop->imgHtml($image, '200x0', ['alt' => $image.description])}
+        					</a>
+        				</div>
+              {/foreach}
+
+
+      			</div>
+      		</div>
+
+      	</div>
+    {/if}
+
+
+
+{* ----------------------------------------------------- *}
+<div class="art-vivod-otdelki">
+    <div class="otdelka-txt">Выбрать другую отделку</div>
+    			<div class="art-otdelka">{$collection = $wa->shop->products("category/`$product.category_id`")}
+        {if count($collection)>0}
+          <ul>
+          {foreach $collection as $pcoll}
+            {if $pcoll.id != $product.id}
+              <li><a title="{$pcoll.name}" href="{$pcoll.frontend_url}">{$wa->shop->productImgHtml($pcoll, '96x0', ['itemprop' => 'image', 'alt' => $pcoll.name, 'default' => "`$wa_theme_url`img/dummy96.png"])}</a></li>
+            {/if}
+          {/foreach}
+          </ul>
+        {/if}
+    	</div>
+</div>
+
+</figure>
+
+
+
+
+
+
+
+{*
+
+{strip}
+
+{if !empty($video.url)}
+    <div id="video-container" class="video-container" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+        <div itemprop="embedHTML">
+            <iframe src="{$video.url}" width="{$video.width}" height="{$video.height}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+        <meta itemprop="width" content="{$video.width}">
+        <meta itemprop="height" content="{$video.height}">
+    </div>
+{/if}
+
+{if $product.images || !empty($video.url)}
+    <figure class="product-gallery">
+
+        {if $product.images}
+            <!-- main image -->
+            <div class="image" id="product-core-image"{if !empty($video.url)} style="display:none"{/if}>
+                <div class="corner top left">
+                    {$wa->shop->badgeHtml($product.badge)}
+                </div>
+                <a href="{$wa->shop->productImgUrl($product, '970x0')}">
+                    {$wa->shop->productImgHtml($product, '0x500', [ 'itemprop' => 'image', 'id' => 'product-image', 'alt' => $product.name|escape ])}
+                    <!--добавил x0   als-->
+                </a>
+                <div id="switching-image" style="display: none;"></div>
+            </div>
+        {/if}
+
+        <!-- thumbs -->
+        <!--{if count($product.images) > 1 || (count($product.images) === 1 && !empty($video.url))}-->
+        <!--    <div class="more-images" id="product-gallery">-->
+        <!--        {if !empty($video.url)}-->
+        <!--            <div class="image video selected">-->
+        <!--                <a id="product-image-video" href="{$video.url}">-->
+        <!--                    <img src="{$video.images[0]}" alt="">-->
+        <!--                </a>-->
+        <!--            </div>-->
+        <!--        {/if}-->
+        <!--        {foreach $product.images as $image}-->
+        <!--            <div class="image{if $image.id == $product.image_id && empty($product.video_url)} selected{/if}">-->
+        <!--                <a id="product-image-{$image.id}" href="{$wa->shop->imgUrl($image, '970')}">-->
+        <!--                    {$wa->shop->imgHtml($image, '96x96', ['alt' => $image.description])}-->
+        <!--                </a>-->
+        <!--            </div>-->
+        <!--        {/foreach}-->
+        <!--    </div>-->
+        <!--{/if}-->
+        {if count($product.images) > 1 || (count($product.images) === 1 && !empty($video.url))}
+            <div class="more-images art-cart-more-images" id="product-gallery">
+                {if !empty($video.url)}
+                    <div class="image video selected">
+                        <a id="product-image-video" href="{$video.url}">
+                            <img src="{$video.images[0]}" alt="">
+                        </a>
+                    </div>
+                {/if}
+                {foreach $product.images as $image}
+                    <div class="image{if $image.id == $product.image_id && empty($product.video_url)} selected{/if}">
+                        <a id="product-image-{$image.id}" href="{$wa->shop->imgUrl($image, '970')}">
+                            {$wa->shop->imgHtml($image, '96x96', ['alt' => $image.description])}
+                        </a>
+                    </div>
+                {/foreach}
+
+            </div>
+        {/if}
+    </figure>
+
+{/if}
+
+
+
+
+
+{/strip}
+*}
