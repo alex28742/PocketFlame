@@ -77,12 +77,7 @@
 
 
 
-          <div class="qty-wrapper col-grid m12 l7 art-qty">
-                  <div><span class="art-kolvo">Количество</span></div>
-                  <div><a href="#" class="qty-minus button gray art-qty-minus"><img src="/wa-data/public/site/themes/profitbuy/img/chevron-left.png">{*<i class="material-icons mi-2x">&#xE5CB;</i>*}</a>
-                  <input type="text" class="art-quantity" name="quantity" value="1"{if !$wa->shop->settings('ignore_stock_count') && count($product.skus) < 2} data-max="{$product.skus[$product.sku_id].count}"{/if}>
-                  <a href="#" class="qty-plus button gray art-qty-plus"><img src="/wa-data/public/site/themes/profitbuy/img/chevron-right.png">{*<i class="material-icons mi-2x">&#xE5CC;</i>*}</a></div>
-              </div>
+
 
 
               {if $product_available || count($product.skus) > 1}
@@ -131,7 +126,12 @@
                   {/if}
               </div>
               {/if}
-
+              <div class="qty-wrapper col-grid m12 l7 art-qty">
+                      <div class="left-ost"><span class="art-kolvo">Количество</span></div>
+                      <div class="right-kol"><a href="#" class="qty-minus button gray art-qty-minus"><img src="/wa-data/public/site/themes/profitbuy/img/chevron-left.png">{*<i class="material-icons mi-2x">&#xE5CB;</i>*}</a>
+                      <input type="text" class="art-quantity" name="quantity" value="1"{if !$wa->shop->settings('ignore_stock_count') && count($product.skus) < 2} data-max="{$product.skus[$product.sku_id].count}"{/if}>
+                      <a href="#" class="qty-plus button gray art-qty-plus"><img src="/wa-data/public/site/themes/profitbuy/img/chevron-right.png">{*<i class="material-icons mi-2x">&#xE5CC;</i>*}</a></div>
+                  </div>
 
 
           </div>

@@ -16,6 +16,13 @@ font-family:"Myriad Pro_SemiBold";
 .art-li2{
 padding-left:50px !important;
 }
+
+.left-ost{
+  float: left;
+  position: relative;
+  left: 10px;
+}
+
 .tel_size{
 font-size:30px !important;
 color: #fff !important;
@@ -1249,10 +1256,7 @@ margin-top:0;
 position:relative;
 bottom:13px;
 padding:0 !important;
-display:-webkit-flex;
-display:-moz-flex;
-display:-ms-flex;
-display:flex;
+
 }
 .art-nal{
 margin-bottom:0;
@@ -1284,11 +1288,7 @@ padding:0 !important;
 
 
 .art-wrap-cartochka .art-kol-nalich{
-display:-webkit-flex;
-display:-ms-flex;
--webkit-flex-direction:row-reverse;
-flex-direction:row-reverse;
-display:flex;
+
 }
 .art-dialog-window .art-hr-cart{
 display:none;
@@ -1424,9 +1424,7 @@ float:left;
   text-align: left;
 }
 
-.art-wrap-cartochka #product-core-image.image{
-  padding: 0 1.5rem 0 0;
-}
+
 
 
 
@@ -1582,14 +1580,11 @@ color:#B50003;
 .art-breadcrumbs .rarr{
 padding:0 8px;
 }
-.art-price-wrapper{
-position:relative;
-bottom:14px;
-height: 60px;
-}
+
 .art-wrap-cartochka .art-korz-dialog{
 position:absolute;
 top:11px;
+right: 0;
 }
 .art-dialog-window .art-korz-dialog{
 position:relative;
@@ -1613,7 +1608,6 @@ font-weight:normal;
 .art-kolvo{
 font-family:"myriad pro";
 font-size:14px;
-margin-right:8px;
 position:relative;
 top:13px;
 }
